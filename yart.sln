@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "yart", "yart\yart.csproj", "{32158F15-D6A3-4EC3-BBEA-FA244C0E14F3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "yart.MathTests", "yart.MathTests\yart.MathTests.csproj", "{7CF9EAA5-262E-416D-A8C8-A0AEFF83DE1C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "yart.ImageTests", "yart.ImageTests\yart.ImageTests.csproj", "{81C0A0DC-2B11-45CE-B807-FE9CBFA1EBB8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{32158F15-D6A3-4EC3-BBEA-FA244C0E14F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32158F15-D6A3-4EC3-BBEA-FA244C0E14F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32158F15-D6A3-4EC3-BBEA-FA244C0E14F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32158F15-D6A3-4EC3-BBEA-FA244C0E14F3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7CF9EAA5-262E-416D-A8C8-A0AEFF83DE1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7CF9EAA5-262E-416D-A8C8-A0AEFF83DE1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7CF9EAA5-262E-416D-A8C8-A0AEFF83DE1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7CF9EAA5-262E-416D-A8C8-A0AEFF83DE1C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{81C0A0DC-2B11-45CE-B807-FE9CBFA1EBB8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81C0A0DC-2B11-45CE-B807-FE9CBFA1EBB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81C0A0DC-2B11-45CE-B807-FE9CBFA1EBB8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81C0A0DC-2B11-45CE-B807-FE9CBFA1EBB8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
