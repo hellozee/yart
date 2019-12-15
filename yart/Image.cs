@@ -37,6 +37,13 @@ namespace yart
             _blue = Clamp(b);
         }
 
+        public Color(Vec3 v)
+        {
+            _red = Clamp(v.Getx());
+            _green = Clamp(v.Gety());
+            _blue = Clamp(v.Getz());
+        }
+
         private static double Clamp(double val)
         {
             return val > 1.0f ? 1.0f : val < 0.0f ? 0.0f : val;
@@ -96,6 +103,7 @@ namespace yart
             {
                 file.WriteLine("P3");
                 file.WriteLine(_imageSize.ToString());
+                file.WriteLine("255");
                 foreach (var color in _colorArray)
                 {
                     file.WriteLine(color.ToString());
