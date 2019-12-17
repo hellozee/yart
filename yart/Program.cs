@@ -5,19 +5,32 @@ namespace yart
 {
     internal static class Program
     {
+
+        private static Vec3 randomPointInSphere()
+        {
+            Vec3 p;
+            do
+            {
+                p = 2.0 * new Vec3(new Random().NextDouble()) - new Vec3(1);
+            } while (p.Magnitude() >= 1.0);
+
+            return p;
+        }
         private static Vec3 color(Ray r, IObject world)
         {
             var rec = new HitRecord();
 
-            if (world.Hit(r, 0.0, double.MaxValue, ref rec))
+            if (world.Hit(r, 0.001, double.MaxValue, ref rec))
             {
-                return 0.5 * (rec.Normal + new Vec3(1.0f));
+                var target = rec.Position + rec.Normal + randomPointInSphere();
+                return 0.5 * color(new Ray(rec.Position, target - rec.Position), world);
             }
             
             var unitVec = r.Direction().Normalize();
             var t = 0.5f * (unitVec.Gety() + 1.0f);
             return (1.0 - t) * new Vec3(1.0f) + t * new Vec3(0.5, 0.7, 1.0);
         }
+        
         public static void Main(string[] args)
         {
             var size = new Size(200, 100);
@@ -44,6 +57,7 @@ namespace yart
                         col += color(r, world);
                     }
                     col /= samples;
+                    col = new Vec3(Math.Sqrt(col.Getx()), Math.Sqrt(col.Gety()), Math.Sqrt(col.Getz()));
                     img.SetColor(i, j, new Color(col));
                 }
             }
