@@ -6,6 +6,7 @@
     <e p="$PROJECT_DIR$" t="IncludeFlat">
       <e p="packages" t="ExcludeRecursive" />
       <e p="yart" t="IncludeRecursive">
+        <e p="Camera.cs" t="Include" />
         <e p="Image.cs" t="Include" />
         <e p="Object.cs" t="Include" />
         <e p="Program.cs" t="Include" />

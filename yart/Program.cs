@@ -1,31 +1,29 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace yart
 {
     internal static class Program
     {
-        private static Color color(Ray r, IObject world)
+        private static Vec3 color(Ray r, IObject world)
         {
             var rec = new HitRecord();
 
             if (world.Hit(r, 0.0, double.MaxValue, ref rec))
             {
-                return new Color(0.5 * (rec.Normal + new Vec3(1.0f)));
+                return 0.5 * (rec.Normal + new Vec3(1.0f));
             }
             
             var unitVec = r.Direction().Normalize();
             var t = 0.5f * (unitVec.Gety() + 1.0f);
-            return new Color((1.0 - t) * new Vec3(1.0f) + 
-                             t * new Vec3(0.5, 0.7, 1.0));
+            return (1.0 - t) * new Vec3(1.0f) + t * new Vec3(0.5, 0.7, 1.0);
         }
         public static void Main(string[] args)
         {
-            var size = new Size(800, 400);
-            var lowerLeft = new Vec3(-2.0, -1.0, -1.0);
-            var horizontal = new Vec3(4.0, 0.0, 0.0);
-            var vertical = new Vec3(0.0, 2.0, 0.0);
-            var origin = new Vec3(0.0, 0.0, 0.0);
+            var size = new Size(200, 100);
+            const int samples = 100;
             var img = new Image(size);
+            var cam = new Camera();
             
             var list = new List<IObject>();
             list.Add(new Sphere(new Vec3(0, 0, -1), 0.5));
@@ -37,11 +35,16 @@ namespace yart
             {
                 for (var j = 0; j < size.Width; j++)
                 {
-                    var u = (double) j / (double) size.Width;
-                    var v = (double) (size.Height - i -1) / (double) size.Height;
-                    var r = new Ray(origin, lowerLeft + u*horizontal + v*vertical);
-                    var c = color(r, world);
-                    img.SetColor(i, j, c);
+                    var col = new Vec3();
+                    
+                    for(var s=0; s<samples; s++){
+                        var u = (double) ( j + new Random().NextDouble()) / (double) size.Width;
+                        var v = (double) (size.Height - i -1 + new Random().NextDouble()) / (double) size.Height;
+                        var r = cam.GetRay(u, v);
+                        col += color(r, world);
+                    }
+                    col /= samples;
+                    img.SetColor(i, j, new Color(col));
                 }
             }
             
