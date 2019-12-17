@@ -39,6 +39,7 @@
     </ItemGroup>
     <ItemGroup>
         <Compile Include="Camera.cs" />
+        <Compile Include="Dielectric.cs" />
         <Compile Include="Image.cs" />
         <Compile Include="Lambertian.cs" />
         <Compile Include="Material.cs" />

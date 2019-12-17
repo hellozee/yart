@@ -31,8 +31,8 @@ namespace yart
         
         public static void Main(string[] args)
         {
-            var size = new Size(800, 400);
-            const int samples = 100;
+            var size = new Size(400, 200);
+            const int samples = 50;
             var img = new Image(size);
             var cam = new Camera();
             
@@ -43,10 +43,11 @@ namespace yart
                 new Lambertian(new Vec3(0.8, 0.8, 0))));
             list.Add(new Sphere(new Vec3(1, 0, -1), 0.5, 
                 new Metal(new Vec3(0.8, 0.6, 0.2))));
-            list.Add(new Sphere(new Vec3(-1, 0, -1), 0.5,
-                new Metal(new Vec3(0.8, 0.8, 0.8))));
+            list.Add(new Sphere(new Vec3(-1, 0, -1), -0.45,
+                new Dielectric(1.5)));
             
             var world = new Scene(list);
+            var rnd = new Random(70);
 
             for (var i = 0; i < size.Height; i++)
             {
@@ -55,8 +56,8 @@ namespace yart
                     var col = new Vec3();
                     
                     for(var s=0; s<samples; s++){
-                        var u = (double) ( j + new Random().NextDouble()) / (double) size.Width;
-                        var v = (double) (size.Height - i -1 + new Random().NextDouble()) / (double) size.Height;
+                        var u = (double) ( j + rnd.NextDouble()) / (double) size.Width;
+                        var v = (double) (size.Height - i -1 + rnd.NextDouble()) / (double) size.Height;
                         var r = cam.GetRay(u, v);
                         col += color(r, world, 0);
                     }

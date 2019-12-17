@@ -16,19 +16,11 @@ namespace yart
             _direction = direction;
         }
 
-        public Vec3 Origin()
-        {
-            return _origin;
-        }
+        public Vec3 Origin() => _origin;
+
+        public Vec3 Direction() => _direction;
+
+        public Vec3 PointAt(double t) => _origin + t * _direction;
         
-        public Vec3 Direction()
-        {
-            return _direction;
-        }
-        
-        public Vec3 PointAt(double t)
-        {
-            return _origin + t * _direction;
-        }
     }
 }

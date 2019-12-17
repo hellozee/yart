@@ -23,20 +23,11 @@ namespace yart
             _z = z;
         }
 
-        public double Getx()
-        {
-            return _x;
-        }
+        public double Getx() => _x;
         
-        public double Gety()
-        {
-            return _y;
-        }
-
-        public double Getz()
-        {
-            return _z;
-        }
+        public double Gety() => _y;
+        
+        public double Getz() => _z;
         
         public static Vec3 operator +(Vec3 v1, Vec3 v2)
         {
@@ -59,10 +50,7 @@ namespace yart
                 v.Getz() * val);
         }
 
-        public static Vec3 operator *(double val, Vec3 v)
-        {
-            return v * val;
-        }
+        public static Vec3 operator *(double val, Vec3 v) => v * val;
 
         public static Vec3 operator *(Vec3 v1, Vec3 v2)
         {

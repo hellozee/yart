@@ -7,6 +7,7 @@
       <e p="packages" t="ExcludeRecursive" />
       <e p="yart" t="IncludeRecursive">
         <e p="Camera.cs" t="Include" />
+        <e p="Dielectric.cs" t="Include" />
         <e p="Image.cs" t="Include" />
         <e p="Lambertian.cs" t="Include" />
         <e p="Material.cs" t="Include" />

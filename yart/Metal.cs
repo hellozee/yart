@@ -4,7 +4,7 @@ namespace yart
     {
         private readonly Vec3 _albedo;
 
-        private static Vec3 Reflect(Vec3 v, Vec3 n)
+        public static Vec3 Reflect(Vec3 v, Vec3 n)
         {
             return v - 2 * Vec3.Dot(v, n) * n;
         }
