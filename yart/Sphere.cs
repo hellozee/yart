@@ -6,11 +6,13 @@ namespace yart
     {
         private readonly Vec3 _center;
         private readonly double _radius;
+        private readonly Material _material;
 
-        public Sphere(Vec3 center, double radius)
+        public Sphere(Vec3 center, double radius, Material material)
         {
             _center = center;
             _radius = radius;
+            _material = material;
         }
         
         public bool Hit(Ray r, double tMin, double tMax, ref HitRecord record)
@@ -29,6 +31,7 @@ namespace yart
                     record.T = temp;
                     record.Position = r.PointAt(temp);
                     record.Normal = (record.Position - _center) / _radius;
+                    record.Mat = _material;
                     return true;
                 }
                 
@@ -38,6 +41,7 @@ namespace yart
                     record.T = temp;
                     record.Position = r.PointAt(temp);
                     record.Normal = (record.Position - _center) / _radius;
+                    record.Mat = _material;
                     return true;
                 }
                 

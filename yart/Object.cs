@@ -6,6 +6,8 @@ namespace yart
         public double T { get; set; }
         public Vec3 Position{ get; set; }
         public Vec3 Normal{ get; set; }
+        
+        public Material Mat { get; set; }
 
         public HitRecord()
         {

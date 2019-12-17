@@ -40,6 +40,9 @@
     <ItemGroup>
         <Compile Include="Camera.cs" />
         <Compile Include="Image.cs" />
+        <Compile Include="Lambertian.cs" />
+        <Compile Include="Material.cs" />
+        <Compile Include="Metal.cs" />
         <Compile Include="Object.cs" />
         <Compile Include="Program.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
