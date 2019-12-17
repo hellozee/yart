@@ -2,7 +2,7 @@ namespace yart
 {
     public class Ray
     {
-        private Vec3 _origin, _direction;
+        private readonly Vec3 _origin, _direction;
 
         public Ray()
         {
@@ -20,12 +20,12 @@ namespace yart
         {
             return _origin;
         }
-
+        
         public Vec3 Direction()
         {
             return _direction;
         }
-
+        
         public Vec3 PointAt(double t)
         {
             return _origin + t * _direction;

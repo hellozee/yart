@@ -49,7 +49,7 @@ namespace yart
         {
             return new Vec3(v1.Getx() - v2.Getx(),
                 v1.Gety() - v2.Gety(),
-                v1.Getz() - v2.Gety());
+                v1.Getz() - v2.Getz());
         }
 
         public static Vec3 operator *(Vec3 v, double val)
