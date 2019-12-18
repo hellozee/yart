@@ -35,7 +35,7 @@ namespace yart
             const int samples = 50;
             var img = new Image(size);
             var cam = new Camera(new Vec3(-2, 2, 1), new Vec3(0, 0, -1),
-                new Vec3(0, 1, 0), 90, (double) size.Width/size.Height);
+                new Vec3(0, 1, 0), 50, (double) size.Width/size.Height);
             
             var list = new List<IObject>();
             list.Add(new Sphere(new Vec3(0, 0, -1), 0.5, 
