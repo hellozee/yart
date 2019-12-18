@@ -1,15 +1,23 @@
+using System;
+
 namespace yart
 {
     public class Camera
     {
         private readonly Vec3 _lowerLeft, _horizontal, _vertical, _origin;
 
-        public Camera()
+        public Camera(Vec3 lookFrom, Vec3 lookAt, Vec3 upAxis, double verticalFoV, double aspectRatio)
         {
-            _lowerLeft = new Vec3(-2.0, -1.0, -1.0);
-            _horizontal = new Vec3(4.0, 0.0, 0.0);
-            _vertical = new Vec3(0.0, 2.0, 0.0);
-            _origin = new Vec3(0.0, 0.0, 0.0);
+            var theta = verticalFoV * Math.PI / 180;
+            var heightBy2 = Math.Tan(theta / 2);
+            var widthBy2 = aspectRatio * heightBy2;
+            _origin = lookFrom;
+            var w = (lookFrom - lookAt).Normalize();
+            var u = Vec3.Cross(upAxis, w).Normalize();
+            var v = Vec3.Cross(w, u);
+            _lowerLeft = _origin - widthBy2 * u - heightBy2 * v - w;
+            _horizontal = 2 * widthBy2 * u;
+            _vertical = 2 * heightBy2 * v;
         }
 
         public Ray GetRay(double u, double v)
