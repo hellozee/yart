@@ -3,7 +3,7 @@ using System.Numerics;
 
 namespace yart
 {
-    public class Dielectric : Material
+    public class Dielectric : IMaterial
     {
         private readonly float _refractiveIndex;
         private readonly Random _rnd;
@@ -37,26 +37,26 @@ namespace yart
         public bool Scatter(Ray r, HitRecord rec, ref Vector3 attenuation, ref Ray scattered)
         {
             Vector3 outwardNormal;
-            var reflected = Metal.Reflect(r.Direction(), rec.Normal);
+            var reflected = Metal.Reflect(r.Direction, rec.Normal);
             float refractiveIndex, cosine, reflectionFactor;
             attenuation = new Vector3(1.0f, 1.0f, 1.0f);
             var refracted = new Vector3();
 
-            if (Vector3.Dot(r.Direction(), rec.Normal) > 0)
+            if (Vector3.Dot(r.Direction, rec.Normal) > 0)
             {
                 outwardNormal = (-1) * rec.Normal;
                 refractiveIndex = _refractiveIndex;
-                cosine = refractiveIndex * Vector3.Dot(r.Direction(), rec.Normal) 
-                         / r.Direction().Length();
+                cosine = refractiveIndex * Vector3.Dot(r.Direction, rec.Normal) 
+                         / r.Direction.Length();
             }
             else
             {
                 outwardNormal = rec.Normal;
                 refractiveIndex = (float) (1.0 / _refractiveIndex);
-                cosine = -1 * Vector3.Dot(r.Direction(), rec.Normal) / r.Direction().Length();
+                cosine = -1 * Vector3.Dot(r.Direction, rec.Normal) / r.Direction.Length();
             }
 
-            if (Refract(r.Direction(), outwardNormal, refractiveIndex, ref refracted))
+            if (Refract(r.Direction, outwardNormal, refractiveIndex, ref refracted))
             {
                 reflectionFactor = Schlick(cosine, refractiveIndex);
             }

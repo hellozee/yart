@@ -3,7 +3,7 @@ using System.Numerics;
 
 namespace yart
 {
-    public class Lambertian : Material
+    public class Lambertian : IMaterial
     {
         private readonly Vector3 _albedo;
         private readonly Random _rnd;

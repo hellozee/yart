@@ -2,7 +2,7 @@ using System.Numerics;
 
 namespace yart
 {
-    public class Metal : Material
+    public class Metal : IMaterial
     {
         private readonly Vector3 _albedo;
 
@@ -17,10 +17,10 @@ namespace yart
         }
         public bool Scatter(Ray r, HitRecord rec, ref Vector3 attenuation, ref Ray scattered)
         {
-            var reflected = Reflect(Vector3.Normalize(r.Direction()), rec.Normal);
+            var reflected = Reflect(Vector3.Normalize(r.Direction), rec.Normal);
             scattered = new Ray(rec.Position, reflected);
             attenuation = _albedo;
-            return (Vector3.Dot(scattered.Direction(), rec.Normal) > 0);
+            return (Vector3.Dot(scattered.Direction, rec.Normal) > 0);
         }
     }
 }

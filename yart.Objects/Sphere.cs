@@ -7,9 +7,9 @@ namespace yart
     {
         private readonly Vector3 _center;
         private readonly float _radius;
-        private readonly Material _material;
+        private readonly IMaterial _material;
 
-        public Sphere(Vector3 center, float radius, Material material)
+        public Sphere(Vector3 center, float radius, IMaterial material)
         {
             _center = center;
             _radius = radius;
@@ -18,9 +18,9 @@ namespace yart
         
         public bool Hit(Ray r, float tMin, float tMax, ref HitRecord record)
         {
-            var oc = r.Origin() - _center;
-            var a = Vector3.Dot(r.Direction(), r.Direction());
-            var b = Vector3.Dot(oc, r.Direction());
+            var oc = r.Origin - _center;
+            var a = Vector3.Dot(r.Direction, r.Direction);
+            var b = Vector3.Dot(oc, r.Direction);
             var c = Vector3.Dot(oc, oc) - _radius * _radius;
             var discriminant = b * b - a * c;
 

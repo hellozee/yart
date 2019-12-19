@@ -6,9 +6,9 @@ namespace yart
         // Do I even need Motion Blur? Anyway lets not break the design, :P
         public float T;
         public Vector3 Position, Normal;
-        public Material Mat;
+        public IMaterial Mat;
     }
-    public interface Material
+    public interface IMaterial
     {
         bool Scatter(Ray r, HitRecord rec, ref Vector3 attenuation, ref Ray scattered);
     }

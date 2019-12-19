@@ -25,7 +25,7 @@ namespace yart
                 }
             }
             
-            var unitVec = Vector3.Normalize(r.Direction());
+            var unitVec = Vector3.Normalize(r.Direction);
             var t = 0.5f * (unitVec.Y + 1.0f);
             return (1.0f - t) * new Vector3(1.0f) + t * new Vector3(0.5f, 0.7f, 1.0f);
         }
