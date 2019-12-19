@@ -61,7 +61,7 @@ namespace yart
                     }
                     col /= samples;
                     col = new Vector3((float) Math.Sqrt(col.X), (float) Math.Sqrt(col.Y), (float) Math.Sqrt(col.Z));
-                    img.SetColor(i, j, new Color(col));
+                    img.SetColor(i, j, col);
                 }
             }
             
