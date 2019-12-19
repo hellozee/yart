@@ -4,7 +4,7 @@ using System.Numerics;
 
 namespace yart
 {
-    internal static class Program
+    internal static class Yart
     {
         private static Vector3 color(Ray r, IObject world, int depth)
         {
