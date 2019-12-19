@@ -1,31 +1,32 @@
 using System;
+using System.Numerics;
 
 namespace yart
 {
     public class Sphere : IObject
     {
-        private readonly Vec3 _center;
-        private readonly double _radius;
+        private readonly Vector3 _center;
+        private readonly float _radius;
         private readonly Material _material;
 
-        public Sphere(Vec3 center, double radius, Material material)
+        public Sphere(Vector3 center, float radius, Material material)
         {
             _center = center;
             _radius = radius;
             _material = material;
         }
         
-        public bool Hit(Ray r, double tMin, double tMax, ref HitRecord record)
+        public bool Hit(Ray r, float tMin, float tMax, ref HitRecord record)
         {
             var oc = r.Origin() - _center;
-            var a = Vec3.Dot(r.Direction(), r.Direction());
-            var b = Vec3.Dot(oc, r.Direction());
-            var c = Vec3.Dot(oc, oc) - _radius * _radius;
+            var a = Vector3.Dot(r.Direction(), r.Direction());
+            var b = Vector3.Dot(oc, r.Direction());
+            var c = Vector3.Dot(oc, oc) - _radius * _radius;
             var discriminant = b * b - a * c;
 
             if (discriminant > 0)
             {
-                var temp = (-b - Math.Sqrt(discriminant)) / a;
+                var temp = (float) (-b - Math.Sqrt(discriminant)) / a;
                 if (temp < tMax && temp > tMin)
                 {
                     record.T = temp;
@@ -35,7 +36,7 @@ namespace yart
                     return true;
                 }
                 
-                temp = (-b + Math.Sqrt(discriminant)) / a;
+                temp = (float) (-b + Math.Sqrt(discriminant)) / a;
                 if (temp < tMax && temp > tMin)
                 {
                     record.T = temp;

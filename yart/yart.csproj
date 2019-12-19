@@ -35,6 +35,7 @@
         <Reference Include="System" />
         <Reference Include="System.Core" />
         <Reference Include="System.Data" />
+        <Reference Include="System.Numerics" />
         <Reference Include="System.Xml" />
     </ItemGroup>
     <ItemGroup>
@@ -50,7 +51,6 @@
         <Compile Include="Ray.cs" />
         <Compile Include="Scene.cs" />
         <Compile Include="Sphere.cs" />
-        <Compile Include="Vector.cs" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

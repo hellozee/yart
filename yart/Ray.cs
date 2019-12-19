@@ -1,26 +1,28 @@
+using System.Numerics;
+
 namespace yart
 {
     public class Ray
     {
-        private readonly Vec3 _origin, _direction;
+        private readonly Vector3 _origin, _direction;
 
         public Ray()
         {
-            _origin = new Vec3();
-            _direction = new Vec3();
+            _origin = new Vector3();
+            _direction = new Vector3();
         }
-
-        public Ray(Vec3 origin, Vec3 direction)
+        public Ray(Vector3 origin, Vector3 direction)
         {
             _origin = origin;
             _direction = direction;
         }
+        
 
-        public Vec3 Origin() => _origin;
+        public Vector3 Origin() => _origin;
 
-        public Vec3 Direction() => _direction;
+        public Vector3 Direction() => _direction;
 
-        public Vec3 PointAt(double t) => _origin + t * _direction;
+        public Vector3 PointAt(float t) => _origin + t * _direction;
         
     }
 }

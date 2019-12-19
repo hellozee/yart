@@ -1,24 +1,26 @@
+using System.Numerics;
+
 namespace yart
 {
     public class HitRecord
     {
         // Do I even need Motion Blur? Anyway lets not break the design, :P
-        public double T { get; set; }
-        public Vec3 Position{ get; set; }
-        public Vec3 Normal{ get; set; }
+        public float T { get; set; }
+        public Vector3 Position{ get; set; }
+        public Vector3 Normal{ get; set; }
         
         public Material Mat { get; set; }
 
         public HitRecord()
         {
-            Position = new Vec3();
-            Normal = new Vec3();
+            Position = new Vector3();
+            Normal = new Vector3();
             T = 0.0f;
         }
     }
     
     public interface IObject
     {
-        bool Hit(Ray r, double tMin, double tMax, ref HitRecord record);
+        bool Hit(Ray r, float tMin, float tMax, ref HitRecord record);
     }
 }

@@ -12,13 +12,13 @@ namespace yart
             _list = objects;
         }
         
-        public bool Hit(Ray r, double tMin, double tMax, ref HitRecord record)
+        public bool Hit(Ray r, float tMin, float tMax, ref HitRecord record)
         {
             var tempRecord = new HitRecord();
             var hasHit = false;
             var closest = tMax;
 
-            foreach (var item in _list
+            foreach (var dummy in _list
                 .Where(item => item.Hit(r, tMin, closest, ref tempRecord)))
             {
                 hasHit = true;

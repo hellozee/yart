@@ -20,30 +20,9 @@
         <e p="Ray.cs" t="Include" />
         <e p="Scene.cs" t="Include" />
         <e p="Sphere.cs" t="Include" />
-        <e p="Vector.cs" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
         <e p="obj" t="ExcludeRecursive" />
         <e p="yart.csproj" t="IncludeRecursive" />
-      </e>
-      <e p="yart.ImageTests" t="IncludeRecursive">
-        <e p="ColorTests.cs" t="Include" />
-        <e p="PPMTests.cs" t="Include" />
-        <e p="Properties" t="Include">
-          <e p="AssemblyInfo.cs" t="Include" />
-        </e>
-        <e p="SizeTests.cs" t="Include" />
-        <e p="bin" t="ExcludeRecursive" />
-        <e p="obj" t="ExcludeRecursive" />
-        <e p="yart.ImageTests.csproj" t="IncludeRecursive" />
-      </e>
-      <e p="yart.MathTests" t="IncludeRecursive">
-        <e p="Properties" t="Include">
-          <e p="AssemblyInfo.cs" t="Include" />
-        </e>
-        <e p="VectorTests.cs" t="Include" />
-        <e p="bin" t="ExcludeRecursive" />
-        <e p="obj" t="ExcludeRecursive" />
-        <e p="yart.MathTests.csproj" t="IncludeRecursive" />
       </e>
       <e p="yart.sln" t="IncludeFlat" />
     </e>

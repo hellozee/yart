@@ -1,5 +1,5 @@
 using System;
-using System.Collections;
+using System.Numerics;
 using System.IO;
 
 namespace yart
@@ -23,43 +23,43 @@ namespace yart
 
     public class Color
     {
-        private double _red, _green, _blue;
+        private float _red, _green, _blue;
 
         public Color()
         {
             _red = _green = _blue = 0;
         }
 
-        public Color(double r, double g, double b)
+        public Color(float r, float g, float b)
         {
             _red = Clamp(r);
             _green = Clamp(g);
             _blue = Clamp(b);
         }
 
-        public Color(Vec3 v)
+        public Color(Vector3 v)
         {
-            _red = Clamp(v.Getx());
-            _green = Clamp(v.Gety());
-            _blue = Clamp(v.Getz());
+            _red = Clamp(v.X);
+            _green = Clamp(v.Y);
+            _blue = Clamp(v.Z);
         }
 
-        private static double Clamp(double val)
+        private static float Clamp(float val)
         {
             return val > 1.0f ? 1.0f : val < 0.0f ? 0.0f : val;
         }
 
-        public double Red()
+        public float Red()
         {
             return _red;
         }
 
-        public double Green()
+        public float Green()
         {
             return _green;
         }
 
-        public double Blue()
+        public float Blue()
         {
             return _blue;
         }
