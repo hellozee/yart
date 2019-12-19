@@ -8,6 +8,10 @@ namespace yart
         private readonly List<IObject> _list;
         private Camera _cam;
 
+        public Scene()
+        {
+            _list = new List<IObject>();
+        }
         public Scene(List<IObject> objects)
         {
             _list = objects;
@@ -22,6 +26,8 @@ namespace yart
         public void SetCamera(Camera cam) => _cam = cam;
         
         public Camera GetCamera() => _cam;
+
+        public void AddObject(IObject obj) => _list.Add(obj);
         
         public bool Hit(Ray r, float tMin, float tMax, ref HitRecord record)
         {
