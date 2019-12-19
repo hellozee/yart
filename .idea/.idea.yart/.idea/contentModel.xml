@@ -44,6 +44,7 @@
         </e>
         <e p="Scene.cs" t="Include" />
         <e p="Sphere.cs" t="Include" />
+        <e p="Triangle.cs" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
         <e p="obj" t="ExcludeRecursive" />
         <e p="yart.Objects.csproj" t="IncludeRecursive" />

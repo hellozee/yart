@@ -15,20 +15,14 @@ namespace yart
             {
                 var scattered = new Ray();
                 var attenuation = new Vector3();
-                if (depth < 50 && rec.Mat.Scatter(r, rec, ref attenuation, ref scattered))
-                {
-                    var ret = attenuation * GetColor(scattered, world, depth + 1);
-                    return ret;
-                }
-                else
-                {
-                    return new Vector3();
-                }
+                if (depth >= 50 || !rec.Mat.Scatter(r, rec, ref attenuation, ref scattered))
+                    return Vector3.Zero;
+                
+                var ret = attenuation * GetColor(scattered, world, depth + 1);
+                return ret;
             }
-            
-            var unitVec = Vector3.Normalize(r.Direction);
-            var t = 0.5f * (unitVec.Y + 1.0f);
-            return (1.0f - t) * new Vector3(1.0f) + t * new Vector3(0.5f, 0.7f, 1.0f);
+
+            return Vector3.One/10;
         }
 
         public static void Render(string fileName, Size size, int samples, Scene world)
@@ -44,7 +38,7 @@ namespace yart
                     
                     for(var s=0; s<samples; s++){
                         var u = (float) ( j + rnd.NextDouble()) / size.Width;
-                        var v = (float) (size.Height - i - 1 + rnd.NextDouble()) / size.Height;
+                        var v = (float) ( i + rnd.NextDouble()) / size.Height;
                         var r = world.GetCamera().GetRay(u, v);
                         col += Tracer.GetColor(r, world, 0);
                     }
