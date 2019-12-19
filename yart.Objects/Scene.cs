@@ -6,11 +6,22 @@ namespace yart
     public class Scene : IObject
     {
         private readonly List<IObject> _list;
+        private Camera _cam;
 
         public Scene(List<IObject> objects)
         {
             _list = objects;
         }
+        
+        public Scene(List<IObject> objects, Camera cam)
+        {
+            _list = objects;
+            _cam = cam;
+        }
+
+        public void SetCamera(Camera cam) => _cam = cam;
+        
+        public Camera GetCamera() => _cam;
         
         public bool Hit(Ray r, float tMin, float tMax, ref HitRecord record)
         {
