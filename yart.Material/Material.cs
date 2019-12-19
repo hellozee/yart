@@ -1,5 +1,4 @@
 using System.Numerics;
-
 namespace yart
 {
     public struct HitRecord
@@ -9,9 +8,8 @@ namespace yart
         public Vector3 Position, Normal;
         public Material Mat;
     }
-    
-    public interface IObject
+    public interface Material
     {
-        bool Hit(Ray r, float tMin, float tMax, ref HitRecord record);
+        bool Scatter(Ray r, HitRecord rec, ref Vector3 attenuation, ref Ray scattered);
     }
 }

@@ -6,23 +6,47 @@
     <e p="$PROJECT_DIR$" t="IncludeFlat">
       <e p="packages" t="ExcludeRecursive" />
       <e p="yart" t="IncludeRecursive">
-        <e p="Camera.cs" t="Include" />
-        <e p="Dielectric.cs" t="Include" />
         <e p="Image.cs" t="Include" />
-        <e p="Lambertian.cs" t="Include" />
-        <e p="Material.cs" t="Include" />
-        <e p="Metal.cs" t="Include" />
-        <e p="Object.cs" t="Include" />
         <e p="Program.cs" t="Include" />
         <e p="Properties" t="Include">
           <e p="AssemblyInfo.cs" t="Include" />
         </e>
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="obj" t="ExcludeRecursive" />
+        <e p="yart.csproj" t="IncludeRecursive" />
+      </e>
+      <e p="yart.Common" t="IncludeRecursive">
+        <e p="Properties" t="Include">
+          <e p="AssemblyInfo.cs" t="Include" />
+        </e>
         <e p="Ray.cs" t="Include" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="obj" t="ExcludeRecursive" />
+        <e p="yart.Common.csproj" t="IncludeRecursive" />
+      </e>
+      <e p="yart.Material" t="IncludeRecursive">
+        <e p="Dielectric.cs" t="Include" />
+        <e p="Lambertian.cs" t="Include" />
+        <e p="Material.cs" t="Include" />
+        <e p="Metal.cs" t="Include" />
+        <e p="Properties" t="Include">
+          <e p="AssemblyInfo.cs" t="Include" />
+        </e>
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="obj" t="ExcludeRecursive" />
+        <e p="yart.Material.csproj" t="IncludeRecursive" />
+      </e>
+      <e p="yart.Objects" t="IncludeRecursive">
+        <e p="Camera.cs" t="Include" />
+        <e p="Object.cs" t="Include" />
+        <e p="Properties" t="Include">
+          <e p="AssemblyInfo.cs" t="Include" />
+        </e>
         <e p="Scene.cs" t="Include" />
         <e p="Sphere.cs" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
         <e p="obj" t="ExcludeRecursive" />
-        <e p="yart.csproj" t="IncludeRecursive" />
+        <e p="yart.Objects.csproj" t="IncludeRecursive" />
       </e>
       <e p="yart.sln" t="IncludeFlat" />
     </e>
