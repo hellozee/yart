@@ -4,27 +4,21 @@ using System.IO;
 
 namespace yart
 {
-    public class Size
+    public struct Size
     {
-        public int Width { get; private set; }
-        public int Height { get; private set; }
+        public readonly int Width, Height;
 
         public Size(int width, int height)
         {
             Width = width;
             Height = height;
         }
-
-        public override string ToString()
-        {
-            return Width + " " + Height;
-        }
     }
 
     public class Image
     {
         private readonly Size _imageSize;
-        private Vector3[,] _colorArray;
+        private readonly Vector3[,] _colorArray;
         
         public Image(Size s)
         {
@@ -38,7 +32,7 @@ namespace yart
             using (var file = new System.IO.StreamWriter(fileName ?? throw new ArgumentNullException(nameof(fileName))))
             {
                 file.WriteLine("P3");
-                file.WriteLine(_imageSize.ToString());
+                file.WriteLine(_imageSize.Width + " " + _imageSize.Height);
                 file.WriteLine("255");
                 foreach (var color in _colorArray)
                 {
