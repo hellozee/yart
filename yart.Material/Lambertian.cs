@@ -22,7 +22,7 @@ namespace yart
         public Lambertian(Vector3 albedo)
         {
             _albedo = albedo;
-            _rnd = new Random(50);
+            _rnd = new Random();
         }
         
         public bool Scatter(Ray r, HitRecord rec, ref Vector3 attenuation, ref Ray scattered)

@@ -31,7 +31,7 @@ namespace yart
         public Dielectric(float refractiveIndex)
         {
             _refractiveIndex = refractiveIndex;
-            _rnd = new Random(67);
+            _rnd = new Random();
         }
         
         public bool Scatter(Ray r, HitRecord rec, ref Vector3 attenuation, ref Ray scattered)

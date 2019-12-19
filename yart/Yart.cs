@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Numerics;
+using System.Drawing;
+using System.Drawing.Imaging;
 
 namespace yart
 {
@@ -34,7 +36,6 @@ namespace yart
         {
             var size = new Size(640, 360);
             const int samples = 50;
-            var img = new Image(size);
             var cam = new Camera(new Vector3(-2, 2, 1), new Vector3(0, 0, -1),
                 new Vector3(0, 1, 0), 50, (float) size.Width/size.Height);
             
@@ -45,7 +46,8 @@ namespace yart
             list.Add(new Sphere(new Vector3(-1, 0, -1), -0.45f, new Dielectric(1.5f)));
             
             var world = new Scene(list);
-            var rnd = new Random(70);
+            var rnd = new Random();
+            var picture = new Bitmap(size.Width, size.Height);
 
             for (var i = 0; i < size.Height; i++)
             {
@@ -55,17 +57,20 @@ namespace yart
                     
                     for(var s=0; s<samples; s++){
                         var u = (float) ( j + rnd.NextDouble()) / (float) size.Width;
-                        var v = (float) (size.Height - i -1 + rnd.NextDouble()) / (float) size.Height;
+                        var v = (float) (size.Height - i - 1 + rnd.NextDouble()) / (float) size.Height;
                         var r = cam.GetRay(u, v);
                         col += color(r, world, 0);
                     }
                     col /= samples;
                     col = new Vector3((float) Math.Sqrt(col.X), (float) Math.Sqrt(col.Y), (float) Math.Sqrt(col.Z));
-                    img.SetColor(i, j, col);
+                    var red = (int)(col.X * 255.99);
+                    var green = (int)(col.Y * 255.99);
+                    var blue = (int)(col.Z * 255.99);
+                    var c = Color.FromArgb(red, green, blue);
+                    picture.SetPixel(j, i, c);
                 }
             }
-            
-            img.Save("ding");
+            picture.Save("ding.png", ImageFormat.Png);
         }
     }
 }
