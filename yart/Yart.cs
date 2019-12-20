@@ -1,4 +1,5 @@
 ﻿using System.Numerics;
+using yart.Material;
 using yart.Objects;
 
 namespace yart
@@ -18,7 +19,7 @@ namespace yart
             world.AddObject(new Sphere(new Vector3(1, 0, -1), .5f, new Metal(new Vector3(.8f, .6f, .2f))));
             world.AddObject(new Sphere(new Vector3(-1, 0, -1), -.45f, new Dielectric(1.5f)));
             world.AddObject(new Triangle(new Vector3(-0.75f,1,-1), new Vector3(0.5f,1,-0.5f), 
-                new Vector3(0.75f,1,-1), Vector3.UnitY, new Lambertian(new Vector3(.4f, .5f, 1.0f))));
+                new Vector3(0.75f,1,-1), Vector3.UnitY, new Emission(new Vector3(.4f, .5f, 1.0f), 2.2f)));
             world.SetCamera(cam);
             
             Tracer.Render("ding.png", size, samples, world);

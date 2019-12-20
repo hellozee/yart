@@ -15,16 +15,16 @@ namespace yart
             {
                 var scattered = new Ray();
                 var attenuation = new Vector3();
-                if (depth >= 50 || !rec.Mat.Scatter(r, rec, ref attenuation, ref scattered))
-                    return Vector3.Zero;
-                
-                var ret = attenuation * GetColor(scattered, world, depth + 1);
-                return ret;
+                var emitted = rec.Mat.Emit(0, 0, rec.Position);
+                if (depth < 50 && rec.Mat.Scatter(r, rec, ref attenuation, ref scattered))
+                    return emitted + attenuation * GetColor(scattered, world, depth + 1);
+
+                return emitted;
             }
 
             return Vector3.One/10;
         }
-
+        
         public static void Render(string fileName, Size size, int samples, Scene world)
         {
             var rnd = new Random();
@@ -45,6 +45,9 @@ namespace yart
                     
                     col /= samples;
                     col = new Vector3((float) Math.Sqrt(col.X), (float) Math.Sqrt(col.Y), (float) Math.Sqrt(col.Z));
+                    var clamp = new Func<float, float>(val => val > 1.0f ? 1.0f : val < 0.0f ? 0.0f : val);
+                    var clampVec3 = new Func<Vector3, Vector3>(vec => new Vector3(clamp(vec.X), clamp(vec.Y), clamp(vec.Z)));
+                    col = clampVec3(col);
                     var red = (int)(col.X * 255.99);
                     var green = (int)(col.Y * 255.99);
                     var blue = (int)(col.Z * 255.99);

@@ -11,5 +11,6 @@ namespace yart
     public interface IMaterial
     {
         bool Scatter(Ray r, HitRecord rec, ref Vector3 attenuation, ref Ray scattered);
+        Vector3 Emit(float u, float v, Vector3 pos);
     }
 }

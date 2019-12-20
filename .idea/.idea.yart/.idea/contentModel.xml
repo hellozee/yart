@@ -26,6 +26,7 @@
       </e>
       <e p="yart.Material" t="IncludeRecursive">
         <e p="Dielectric.cs" t="Include" />
+        <e p="Emission.cs" t="Include" />
         <e p="Lambertian.cs" t="Include" />
         <e p="Material.cs" t="Include" />
         <e p="Metal.cs" t="Include" />

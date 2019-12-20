@@ -70,5 +70,10 @@ namespace yart
 
             return true;
         }
+
+        public Vector3 Emit(float u, float v, Vector3 pos)
+        {
+            return Vector3.Zero;
+        }
     }
 }

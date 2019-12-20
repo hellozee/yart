@@ -22,5 +22,10 @@ namespace yart
             attenuation = _albedo;
             return (Vector3.Dot(scattered.Direction, rec.Normal) > 0);
         }
+
+        public Vector3 Emit(float u, float v, Vector3 pos)
+        {
+            return Vector3.Zero;
+        }
     }
 }
