@@ -22,7 +22,8 @@ namespace yart
                 new Vector3(0.75f,1,-1), Vector3.UnitY, new Emission(new Vector3(.4f, .5f, 1.0f), 2.2f)));
             world.SetCamera(cam);
             
-            Tracer.Render("ding.png", size, samples, world);
+            var tracer = new Tracer();
+            tracer.Render("ding.png", size, samples, world);
         }
     }
 }

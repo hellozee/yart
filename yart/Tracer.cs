@@ -5,27 +5,35 @@ using System.Drawing.Imaging;
 
 namespace yart
 {
-    public static class Tracer
+    public class Tracer
     {
-        private static Vector3 GetColor(Ray r, IObject world, int depth)
+        private readonly Vector3 _ambientLight;
+        private Vector3 GetColor(Ray r, IObject world, int depth)
         {
             var rec = new HitRecord();
 
-            if (world.Hit(r, 0.001f, float.MaxValue, ref rec))
-            {
-                var scattered = new Ray();
-                var attenuation = new Vector3();
-                var emitted = rec.Mat.Emit(0, 0, rec.Position);
-                if (depth < 50 && rec.Mat.Scatter(r, rec, ref attenuation, ref scattered))
-                    return emitted + attenuation * GetColor(scattered, world, depth + 1);
+            if (!world.Hit(r, 0.001f, float.MaxValue, ref rec)) return _ambientLight;
+            var scattered = new Ray();
+            var attenuation = new Vector3();
+            var emitted = rec.Mat.Emit(0, 0, rec.Position);
+            if (depth < 50 && rec.Mat.Scatter(r, rec, ref attenuation, ref scattered))
+                return emitted + attenuation * this.GetColor(scattered, world, depth + 1);
 
-                return emitted;
-            }
+            return emitted;
 
-            return Vector3.One/10;
+        }
+
+        public Tracer()
+        {
+            _ambientLight = Vector3.Zero;
         }
         
-        public static void Render(string fileName, Size size, int samples, Scene world)
+        public Tracer(Vector3 ambientLight)
+        {
+            _ambientLight = ambientLight;
+        }
+        
+        public void Render(string fileName, Size size, int samples, Scene world)
         {
             var rnd = new Random();
             var picture = new Bitmap(size.Width, size.Height);
@@ -40,7 +48,7 @@ namespace yart
                         var u = (float) ( j + rnd.NextDouble()) / size.Width;
                         var v = (float) ( i + rnd.NextDouble()) / size.Height;
                         var r = world.GetCamera().GetRay(u, v);
-                        col += Tracer.GetColor(r, world, 0);
+                        col += this.GetColor(r, world, 0);
                     }
                     
                     col /= samples;
